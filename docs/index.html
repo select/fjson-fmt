@@ -92,6 +92,44 @@
     </div>
   </section>
 
+  <section class="usage">
+    <div class="panel card">
+      <h2>Use it in your project</h2>
+      <p class="muted">A Prettier / oxfmt-style <code>--check</code> + <code>--write</code> CLI for JSON. Ships prebuilt WASM — no Rust toolchain needed.</p>
+      <pre class="code"><code>npm i -D fjson-fmt
+
+# format in place (default)
+fjson-fmt "**/*.json"
+
+# verify in CI — exits 1 if anything would change
+fjson-fmt --check "**/*.json"
+
+# stdin → stdout
+cat data.json | fjson-fmt --stdin</code></pre>
+      <p class="muted">Run alongside oxfmt (which owns JS/TS/CSS):</p>
+      <pre class="code"><code>{
+  "scripts": {
+    "fmt": "oxfmt && fjson-fmt \"**/*.json\"",
+    "fmt:check": "oxfmt --check && fjson-fmt --check \"**/*.json\""
+  }
+}</code></pre>
+    </div>
+
+    <div class="panel card">
+      <h2>Programmatic API</h2>
+      <p class="muted">The same import works in Node and the browser (isomorphic). <code>format()</code> is async and initializes the engine on first use.</p>
+      <pre class="code"><code>import { format } from "fjson-fmt";
+
+const pretty = await format(json, {
+  max_total_line_length: 120,
+  indent_spaces: 2,
+});</code></pre>
+      <p class="muted">In Node a synchronous path is available immediately:</p>
+      <pre class="code"><code>import { formatSync } from "fjson-fmt";
+const out = formatSync(json, { number_list_alignment: "right" });</code></pre>
+    </div>
+  </section>
+
   <footer class="foot">
     <p>Rust <code>fracturedjson-rs</code> → WebAssembly · ~185&nbsp;KB · runs 100% client-side. Algorithm by
       <a href="https://github.com/j-brooke/FracturedJson" target="_blank" rel="noopener">j-brooke</a>.</p>
