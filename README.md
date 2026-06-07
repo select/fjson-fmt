@@ -108,9 +108,11 @@ pnpm test:all             # both of the above
 
 Releases are cut with [release-it](https://github.com/release-it/release-it)
 (conventional-changelog, angular preset). It runs the full test suite, bumps the
-version, updates `CHANGELOG.md`, tags, pushes, and publishes to npm:
+version, updates `CHANGELOG.md`, tags, pushes, creates a GitHub Release, and
+publishes to npm:
 
 ```sh
+export GITHUB_TOKEN=$(gh auth token)   # for the GitHub Release step
 pnpm release              # interactive; or: pnpm release --ci patch|minor|major
 ```
 
