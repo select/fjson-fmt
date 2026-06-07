@@ -1,7 +1,7 @@
 # fjson-fmt
 
 A **Prettier-style `--check` + `--write` formatter for JSON** built on the
-[FracturedJson](https://j-brooke.github.io/FracturedJson/) algorithm — compact,
+[FracturedJson](https://j-brooke.github.io/FracturedJson/) algorithm - compact,
 human-readable JSON with smart line breaks and table-like alignment.
 
 The formatting engine is the Rust crate
@@ -27,7 +27,7 @@ It turns this:
 }
 ```
 
-using `npx fjson-fmt --stdin < example.json`, into this — compact, but with fields aligned like a table:
+using `npx fjson-fmt --stdin < example.json`, into this - compact, but with fields aligned like a table:
 
 ```json
 {
@@ -62,22 +62,24 @@ with FracturedJson.
 
 ## Browser playground
 
-A zero-backend playground lives in [`docs/`](docs/) and is meant to be served
-via GitHub Pages. The same Rust engine is built for the browser
+**[▶ Try it live: select.github.io/fjson-fmt](https://select.github.io/fjson-fmt/)**
+
+A zero-backend playground lives in [`docs/`](docs/) and is served via GitHub
+Pages. The same Rust engine is built for the browser
 (`wasm-pack build --target web`) and loaded as an ES module — the whole thing
-is ~185 KB of WASM and runs entirely client-side, with a claymorphism UI and a
+is ~185 KB of WASM and runs entirely client-side, with a claymorphism UI and a
 light/dark theme toggle.
 
-![Light theme](docs/screenshots/light.png)
-![Dark theme](docs/screenshots/dark.png)
+[![Playground](docs/screenshots/light.png)](https://select.github.io/fjson-fmt/)
 
 ```sh
 npm run build:web        # rebuild docs/pkg from the crate
 npx serve docs           # preview locally, then open the printed URL
 ```
 
-To publish: in the repo settings enable **Pages → Deploy from branch → `main` /
-`docs`**. Force a theme with `?theme=light` or `?theme=dark`.
+Deployed automatically on each `v*.*.*` release tag
+([`deploy-to-pages.yml`](.github/workflows/deploy-to-pages.yml)). Force a theme
+with `?theme=light` or `?theme=dark`.
 
 ## Install
 
@@ -91,7 +93,7 @@ npm i -D fjson-fmt   # ships prebuilt WASM; no Rust toolchain needed
 # Format files in place (default)
 fjson-fmt "**/*.json"
 
-# Verify formatting (CI) — exits 1 if anything would change
+# Verify formatting (CI) - exits 1 if anything would change
 fjson-fmt --check "**/*.json"
 
 # List files that differ (no writing)
@@ -118,7 +120,7 @@ Run alongside oxfmt:
 
 ## Programmatic API
 
-The package is **isomorphic** — the same import works in Node and in the
+The package is **isomorphic** - the same import works in Node and in the
 browser (or any bundler). Conditional `exports` route to a Node build (WASM
 loaded synchronously) or a web build (WASM fetched + instantiated once).
 
@@ -199,7 +201,7 @@ pnpm install              # dev dependencies (release-it, etc.)
 
 pnpm build:wasm           # rebuilds pkg/ from crate/
 pnpm test                 # node --test (CLI/engine glue, no toolchain)
-pnpm test:engine          # cargo test — FracturedJson engine suite (needs Rust)
+pnpm test:engine          # cargo test - FracturedJson engine suite (needs Rust)
 pnpm test:all             # both of the above
 ```
 
@@ -233,4 +235,4 @@ Rust toolchain.
 ## License
 
 MIT. The vendored engine in `crate/src/*.rs` (except `lib.rs`) is from
-`fcoury/fracturedjson-rs`, MIT © Felipe Coury — see `crate/UPSTREAM-LICENSE`.
+`fcoury/fracturedjson-rs`, MIT © Felipe Coury - see `crate/UPSTREAM-LICENSE`.

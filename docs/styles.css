@@ -61,7 +61,7 @@ body {
 }
 
 /* floating background blobs */
-.bg-orbs { position: fixed; inset: 0; z-index: -1; filter: blur(60px); opacity: .55; }
+.bg-orbs { position: fixed; inset: 0; z-index: -1; filter: blur(90px); opacity: .1; }
 .orb { position: absolute; border-radius: 50%; }
 .orb-1 { width: 42vmax; height: 42vmax; background: var(--orb-1); top: -12vmax; left: -10vmax; }
 .orb-2 { width: 34vmax; height: 34vmax; background: var(--orb-2); bottom: -14vmax; right: -8vmax; }
@@ -76,16 +76,16 @@ body {
   background: var(--surface);
   border: none;
   box-shadow:
-    8px 8px 18px var(--shadow-dark),
-    -8px -8px 18px var(--shadow-light);
+    4px 4px 10px var(--shadow-dark),
+    -4px -4px 10px var(--shadow-light);
 }
 
 .clay-inset {
   background: var(--surface);
   border-radius: var(--radius-sm);
   box-shadow:
-    inset 6px 6px 14px var(--inset-dark),
-    inset -6px -6px 14px var(--inset-light);
+    inset 3px 3px 7px var(--inset-dark),
+    inset -3px -3px 7px var(--inset-light);
 }
 
 /* ── layout ──────────────────────────────────────────────────────── */
@@ -100,7 +100,7 @@ body {
   width: 56px; height: 56px; border-radius: 18px;
   font: 700 1.3rem/1 var(--mono); color: #fff;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 5px 5px 12px var(--shadow-dark), -5px -5px 12px var(--shadow-light);
+  box-shadow: 3px 3px 7px var(--shadow-dark), -3px -3px 7px var(--shadow-light);
 }
 h1 { margin: 0; font-size: 1.5rem; letter-spacing: -.02em; }
 .tagline { margin: .15rem 0 0; color: var(--text-soft); font-size: .9rem; }
@@ -138,7 +138,7 @@ pre#output { min-height: 320px; }
 .clay-btn:hover, .chip:hover { transform: translateY(-1px); }
 .clay-btn:active, .chip:active {
   transform: translateY(0);
-  box-shadow: inset 4px 4px 10px var(--inset-dark), inset -4px -4px 10px var(--inset-light);
+  box-shadow: inset 2px 2px 6px var(--inset-dark), inset -2px -2px 6px var(--inset-light);
 }
 .clay-btn.ghost { color: var(--text-soft); }
 .clay-btn.icon { width: 46px; height: 46px; padding: 0; display: grid; place-items: center; font-size: 1.2rem; }
@@ -154,7 +154,7 @@ pre#output { min-height: 320px; }
 .clay-field {
   border-radius: 12px; padding: .6rem .8rem; color: var(--text);
   font-family: var(--sans); font-size: .9rem;
-  box-shadow: inset 4px 4px 10px var(--inset-dark), inset -4px -4px 10px var(--inset-light);
+  box-shadow: inset 2px 2px 6px var(--inset-dark), inset -2px -2px 6px var(--inset-light);
   background: var(--surface);
 }
 .clay-field:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -165,13 +165,13 @@ pre#output { min-height: 320px; }
 .track {
   position: relative; width: 46px; height: 26px; border-radius: 999px; flex: none;
   background: var(--surface);
-  box-shadow: inset 3px 3px 7px var(--inset-dark), inset -3px -3px 7px var(--inset-light);
+  box-shadow: inset 2px 2px 4px var(--inset-dark), inset -2px -2px 4px var(--inset-light);
   transition: background var(--speed);
 }
 .thumb {
   position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%;
   background: var(--surface);
-  box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+  box-shadow: 1px 1px 3px var(--shadow-dark);
   transition: transform var(--speed), background var(--speed);
 }
 .switch input:checked + .track { background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
