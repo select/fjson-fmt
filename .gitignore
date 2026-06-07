@@ -13,3 +13,7 @@ node_modules/
 #
 # Likewise docs/pkg/ (web-target WASM) IS committed so GitHub Pages can serve
 # the browser playground statically. Rebuild with `npm run build:web`.
+#
+# pkg-web/ (web-target WASM shipped in the npm tarball for the browser build)
+# IS committed too. `npm run build:web` regenerates pkg-web/ and copies it into
+# docs/pkg/.

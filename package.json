@@ -15,6 +15,16 @@
   "bin": {
     "fjson-fmt": "bin/fjson-fmt.mjs"
   },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "node": "./lib/index.node.mjs",
+      "browser": "./lib/index.web.mjs",
+      "default": "./lib/index.web.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./lib/index.d.ts",
   "files": [
     "bin",
     "lib",
@@ -22,6 +32,10 @@
     "pkg/fjson_fmt_engine.d.ts",
     "pkg/fjson_fmt_engine_bg.wasm",
     "pkg/fjson_fmt_engine_bg.wasm.d.ts",
+    "pkg-web/fjson_fmt_engine.js",
+    "pkg-web/fjson_fmt_engine.d.ts",
+    "pkg-web/fjson_fmt_engine_bg.wasm",
+    "pkg-web/fjson_fmt_engine_bg.wasm.d.ts",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -30,11 +44,11 @@
   },
   "scripts": {
     "build:wasm": "wasm-pack build crate --target nodejs --out-dir ../pkg --release",
-    "build:web": "wasm-pack build crate --target web --out-dir ../docs/pkg --release",
+    "build:web": "wasm-pack build crate --target web --out-dir ../pkg-web --release && rm -f pkg-web/.gitignore && cp pkg-web/fjson_fmt_engine.js pkg-web/fjson_fmt_engine.d.ts pkg-web/fjson_fmt_engine_bg.wasm pkg-web/fjson_fmt_engine_bg.wasm.d.ts pkg-web/package.json docs/pkg/",
     "test": "node --test",
     "test:engine": "cargo test --manifest-path crate/Cargo.toml",
     "test:all": "pnpm test && pnpm test:engine",
-    "prepublishOnly": "pnpm build:wasm && pnpm test:all",
+    "prepublishOnly": "pnpm build:wasm && pnpm build:web && pnpm test:all",
     "release": "GITHUB_TOKEN=$(gh auth token) release-it"
   },
   "devDependencies": {

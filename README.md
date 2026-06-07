@@ -116,6 +116,37 @@ Run alongside oxfmt:
 }
 ```
 
+## Programmatic API
+
+The package is **isomorphic** — the same import works in Node and in the
+browser (or any bundler). Conditional `exports` route to a Node build (WASM
+loaded synchronously) or a web build (WASM fetched + instantiated once).
+
+```js
+import { init, format, formatSync, engineVersion } from "fjson-fmt";
+
+// Portable: `format` is async and initializes the engine on first use.
+const pretty = await format('{"a":[1,2,3],"bb":[44,55]}', {
+  max_total_line_length: 120,
+  indent_spaces: 2,
+});
+
+// Sync path: available immediately in Node; in the browser call `await init()`
+// first (it's idempotent), then `formatSync` is synchronous.
+await init();
+const out = formatSync(input, { number_list_alignment: "right" });
+```
+
+- **Node** resolves the `"node"` export (synchronous WASM); `formatSync` works
+  with no `init()`.
+- **Browsers / bundlers** (Vite, webpack 5, Rollup) resolve the `"browser"`
+  export; the `.wasm` is located via `new URL(..., import.meta.url)`, so no
+  extra loader config is needed.
+
+Option keys are the canonical snake_case `FracturedJsonOptions` names (see
+[`crate/src/options.rs`](crate/src/options.rs)); TypeScript types ship with the
+package.
+
 ## Options
 
 CLI flags (override config files):
