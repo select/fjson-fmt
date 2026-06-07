@@ -1,0 +1,12 @@
+# Rust build artifacts
+crate/target/
+target/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# NOTE: pkg/ (prebuilt WASM + JS glue) IS committed so the CLI runs without a
+# Rust toolchain. Rebuild with `npm run build:wasm`.

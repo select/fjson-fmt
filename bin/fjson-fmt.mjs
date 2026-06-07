@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+import { run } from "../lib/cli.mjs";
+
+run(process.argv.slice(2))
+  .then((code) => process.exit(code))
+  .catch((err) => {
+    process.stderr.write(`fatal: ${err?.stack ?? err}\n`);
+    process.exit(2);
+  });

@@ -1,0 +1,13 @@
+{
+  "name": "fjson-fmt-engine",
+  "description": "WASM bindings around a vendored FracturedJson formatter engine",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "fjson_fmt_engine_bg.wasm",
+    "fjson_fmt_engine.js",
+    "fjson_fmt_engine.d.ts"
+  ],
+  "main": "fjson_fmt_engine.js",
+  "types": "fjson_fmt_engine.d.ts"
+}
