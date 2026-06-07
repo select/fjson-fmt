@@ -1,5 +1,13 @@
 # Changelog
 
+# [0.4.0](https://github.com/select/fjson-fmt/compare/v0.2.1...v0.4.0) (2026-06-07)
+
+
+### Features
+
+* **lib:** isomorphic library API for Node and the browser ([5abeb0d](https://github.com/select/fjson-fmt/commit/5abeb0dc3f225676261f114d194459a7e5c27372))
+* **web:** add claymorphism browser playground (Pages) via web-target WASM ([c0bf7f6](https://github.com/select/fjson-fmt/commit/c0bf7f610eb78442befcf381b5badea6462d3bd5))
+
 # [0.3.0](https://github.com/select/fjson-fmt/compare/v0.2.1...v0.3.0) (2026-06-07)
 
 
