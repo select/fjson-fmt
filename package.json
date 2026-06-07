@@ -29,7 +29,7 @@
     "test:engine": "cargo test --manifest-path crate/Cargo.toml",
     "test:all": "pnpm test && pnpm test:engine",
     "prepublishOnly": "pnpm build:wasm && pnpm test:all",
-    "release": "release-it"
+    "release": "GITHUB_TOKEN=$(gh auth token) release-it"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "11.0.1",
