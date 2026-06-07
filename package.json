@@ -17,7 +17,8 @@
     "pkg/fjson_fmt_engine.d.ts",
     "pkg/fjson_fmt_engine_bg.wasm",
     "pkg/fjson_fmt_engine_bg.wasm.d.ts",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">=20.19.0"
@@ -26,8 +27,13 @@
     "build:wasm": "wasm-pack build crate --target nodejs --out-dir ../pkg --release",
     "test": "node --test",
     "test:engine": "cargo test --manifest-path crate/Cargo.toml",
-    "test:all": "npm run test && npm run test:engine",
-    "prepublishOnly": "npm run build:wasm && npm run test:all"
+    "test:all": "pnpm test && pnpm test:engine",
+    "prepublishOnly": "pnpm build:wasm && pnpm test:all",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "11.0.1",
+    "release-it": "20.2.0"
   },
   "license": "MIT",
   "keywords": ["json", "jsonc", "formatter", "fracturedjson", "prettier", "wasm"]

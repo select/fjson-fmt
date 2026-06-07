@@ -90,16 +90,28 @@ Full option list: see `crate/src/options.rs`.
 
 ## Development
 
-Requires Rust + the `wasm32-unknown-unknown` target + `wasm-pack`.
+Requires Rust + the `wasm32-unknown-unknown` target + `wasm-pack`, plus
+[pnpm](https://pnpm.io) for the Node tooling.
 
 ```sh
 rustup target add wasm32-unknown-unknown
 cargo install wasm-pack   # or use the binary installer
+pnpm install              # dev dependencies (release-it, etc.)
 
-npm run build:wasm        # rebuilds pkg/ from crate/
-npm test                  # node --test (CLI/engine glue, no toolchain)
-npm run test:engine       # cargo test — FracturedJson engine suite (needs Rust)
-npm run test:all          # both of the above
+pnpm build:wasm           # rebuilds pkg/ from crate/
+pnpm test                 # node --test (CLI/engine glue, no toolchain)
+pnpm test:engine          # cargo test — FracturedJson engine suite (needs Rust)
+pnpm test:all             # both of the above
+```
+
+### Releasing
+
+Releases are cut with [release-it](https://github.com/release-it/release-it)
+(conventional-changelog, angular preset). It runs the full test suite, bumps the
+version, updates `CHANGELOG.md`, tags, pushes, and publishes to npm:
+
+```sh
+pnpm release              # interactive; or: pnpm release --ci patch|minor|major
 ```
 
 ### Engine test suite
@@ -111,7 +123,7 @@ against the standard shared fixtures in `test/StandardJsonFiles/` and
 `test/FilesWithComments/` (from `j-brooke/FracturedJsonJs`):
 
 ```sh
-npm run test:engine       # or: cargo test --manifest-path crate/Cargo.toml
+pnpm test:engine          # or: cargo test --manifest-path crate/Cargo.toml
 ```
 
 The prebuilt `pkg/` (WASM + JS glue) is committed so the CLI works without a
