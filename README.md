@@ -60,6 +60,25 @@ It is designed to run **alongside [oxfmt](https://oxc.rs/docs/guide/usage/format
 (which owns JS/TS/CSS/etc.), since neither oxfmt nor oxlint can format `.json`
 with FracturedJson.
 
+## Browser playground
+
+A zero-backend playground lives in [`docs/`](docs/) and is meant to be served
+via GitHub Pages. The same Rust engine is built for the browser
+(`wasm-pack build --target web`) and loaded as an ES module — the whole thing
+is ~185 KB of WASM and runs entirely client-side, with a claymorphism UI and a
+light/dark theme toggle.
+
+![Light theme](docs/screenshots/light.png)
+![Dark theme](docs/screenshots/dark.png)
+
+```sh
+npm run build:web        # rebuild docs/pkg from the crate
+npx serve docs           # preview locally, then open the printed URL
+```
+
+To publish: in the repo settings enable **Pages → Deploy from branch → `main` /
+`docs`**. Force a theme with `?theme=light` or `?theme=dark`.
+
 ## Install
 
 ```sh
