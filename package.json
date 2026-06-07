@@ -1,12 +1,17 @@
 {
   "name": "fjson-fmt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Prettier-style check + write formatter for JSON using the FracturedJson algorithm (Rust engine compiled to WASM).",
   "type": "module",
   "author": "select",
-  "repository": { "type": "git", "url": "git+https://github.com/select/fjson-fmt.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/select/fjson-fmt.git"
+  },
   "homepage": "https://github.com/select/fjson-fmt#readme",
-  "bugs": { "url": "https://github.com/select/fjson-fmt/issues" },
+  "bugs": {
+    "url": "https://github.com/select/fjson-fmt/issues"
+  },
   "bin": {
     "fjson-fmt": "bin/fjson-fmt.mjs"
   },
@@ -36,5 +41,12 @@
     "release-it": "20.2.0"
   },
   "license": "MIT",
-  "keywords": ["json", "jsonc", "formatter", "fracturedjson", "prettier", "wasm"]
+  "keywords": [
+    "json",
+    "jsonc",
+    "formatter",
+    "fracturedjson",
+    "prettier",
+    "wasm"
+  ]
 }
