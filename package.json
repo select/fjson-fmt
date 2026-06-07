@@ -20,7 +20,9 @@
   },
   "scripts": {
     "build:wasm": "wasm-pack build crate --target nodejs --out-dir ../pkg --release",
-    "test": "node --test"
+    "test": "node --test",
+    "test:engine": "cargo test --manifest-path crate/Cargo.toml",
+    "test:all": "npm run test && npm run test:engine"
   },
   "license": "MIT",
   "keywords": ["json", "jsonc", "formatter", "fracturedjson", "prettier", "wasm"]

@@ -97,7 +97,21 @@ rustup target add wasm32-unknown-unknown
 cargo install wasm-pack   # or use the binary installer
 
 npm run build:wasm        # rebuilds pkg/ from crate/
-npm test                  # node --test
+npm test                  # node --test (CLI/engine glue, no toolchain)
+npm run test:engine       # cargo test — FracturedJson engine suite (needs Rust)
+npm run test:all          # both of the above
+```
+
+### Engine test suite
+
+The Rust engine is verified by the FracturedJson port's integration test suite
+(vendored from `fcoury/fracturedjson-rs`, which itself tracks j-brooke's
+cross-implementation "universal" tests). It lives in `crate/tests/` and runs
+against the standard shared fixtures in `test/StandardJsonFiles/` and
+`test/FilesWithComments/` (from `j-brooke/FracturedJsonJs`):
+
+```sh
+npm run test:engine       # or: cargo test --manifest-path crate/Cargo.toml
 ```
 
 The prebuilt `pkg/` (WASM + JS glue) is committed so the CLI works without a

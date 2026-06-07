@@ -16,8 +16,13 @@ mod parser;
 mod table_template;
 mod tokenizer;
 
-use formatter::Formatter;
-use options::{
+// Re-export the vendored engine's public API so the upstream FracturedJson
+// integration test suite (in `crate/tests/`) can exercise it directly. This
+// mirrors the public surface of `fcoury/fracturedjson-rs`.
+pub use crate::error::FracturedJsonError;
+pub use crate::formatter::Formatter;
+pub use crate::model::{InputPosition, JsonItemType};
+pub use crate::options::{
     CommentPolicy, EolStyle, FracturedJsonOptions, NumberListAlignment, TableCommaPlacement,
 };
 use serde::Deserialize;
