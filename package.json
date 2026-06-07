@@ -1,6 +1,6 @@
 {
   "name": "fjson-fmt",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Prettier-style check + write formatter for JSON using the FracturedJson algorithm (Rust engine compiled to WASM).",
   "type": "module",
   "author": "select",
