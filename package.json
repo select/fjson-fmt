@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "A Prettier-style check + write formatter for JSON using the FracturedJson algorithm (Rust engine compiled to WASM).",
   "type": "module",
+  "author": "select",
+  "repository": { "type": "git", "url": "git+https://github.com/select/fjson-fmt.git" },
+  "homepage": "https://github.com/select/fjson-fmt#readme",
+  "bugs": { "url": "https://github.com/select/fjson-fmt/issues" },
   "bin": {
     "fjson-fmt": "bin/fjson-fmt.mjs"
   },
@@ -22,7 +26,8 @@
     "build:wasm": "wasm-pack build crate --target nodejs --out-dir ../pkg --release",
     "test": "node --test",
     "test:engine": "cargo test --manifest-path crate/Cargo.toml",
-    "test:all": "npm run test && npm run test:engine"
+    "test:all": "npm run test && npm run test:engine",
+    "prepublishOnly": "npm run build:wasm && npm run test:all"
   },
   "license": "MIT",
   "keywords": ["json", "jsonc", "formatter", "fracturedjson", "prettier", "wasm"]
