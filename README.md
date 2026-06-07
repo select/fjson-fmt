@@ -10,6 +10,52 @@ into `crate/` and compiled to WebAssembly** via `wasm-pack`. The CLI is a thin
 Node.js layer that adds the check/write workflow, globbing, and config discovery
 that no existing FracturedJson port provides.
 
+It turns this:
+
+```json
+{
+  "Isotopes": {
+    "Hydrogen": [1, 2, 3],
+    "Carbon": [11, 12, 13, 14],
+    "Molybdenum": [92, 94, 95, 96, 97, 98, 100]
+  },
+  "ElementProperties": [
+    { "symbol": "C", "number": 6, "mass": { "amu": 12, "round": 12 }, "phase": "solid" },
+    { "symbol": "O", "number": 8, "mass": { "amu": 16, "round": 16 } },
+    { "symbol": "Fe", "number": 26, "mass": { "amu": 56, "round": 56 }, "phase": "solid" }
+  ]
+}
+```
+
+using `npx fjson-fmt --stdin < example.json`, into this — compact, but with fields aligned like a table:
+
+```json
+{
+    "Isotopes"         : {
+        "Hydrogen"  : [ 1,  2,  3                 ],
+        "Carbon"    : [11, 12, 13, 14             ],
+        "Molybdenum": [92, 94, 95, 96, 97, 98, 100]
+    },
+    "ElementProperties": [
+        { "symbol": "C",  "number":  6, "mass": {"amu": 12, "round": 12}, "phase": "solid" },
+        { "symbol": "O",  "number":  8, "mass": {"amu": 16, "round": 16}                   },
+        { "symbol": "Fe", "number": 26, "mass": {"amu": 56, "round": 56}, "phase": "solid" }
+    ]
+}
+```
+
+Long arrays of arrays get packed multiple items per line, neatly aligned:
+
+```json
+{
+    "Bonds": [
+        [ 6,  8], [ 6,  8], [ 8,  1], [ 8,  1], [ 6,  1], [ 6,  1], [ 6,  1], [ 6,  6], [ 6,  6], [ 6,  7], [ 7,  1],
+        [ 7,  1], [ 6, 16], [16,  1], [15,  8], [15,  8], [15,  8], [11, 17], [11, 17], [12,  8], [12,  8], [20,  9],
+        [20,  9], [19, 17], [19, 17], [13,  8], [13,  8], [13,  8], [14,  8], [14,  8], [ 5,  9], [ 5,  9]
+    ]
+}
+```
+
 It is designed to run **alongside [oxfmt](https://oxc.rs/docs/guide/usage/formatter)**
 (which owns JS/TS/CSS/etc.), since neither oxfmt nor oxlint can format `.json`
 with FracturedJson.
@@ -34,6 +80,9 @@ fjson-fmt --list-different "**/*.json"
 
 # stdin → stdout
 cat data.json | fjson-fmt --stdin --indent 2
+
+# Format a file to stdout without modifying it
+npx fjson-fmt --stdin < example.json
 ```
 
 Run alongside oxfmt:
